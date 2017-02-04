@@ -1,9 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from 'react-dom';
+import App from './components/App';
 import './index.css';
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import createLogger from 'redux-logger';
+import reducer from './reducers';
 
-ReactDOM.render(
-  <App />,
+const logger = createLogger();
+const store = createStore(
+  reducer,
+  applyMiddleware(logger)
+);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
