@@ -1,15 +1,22 @@
-import { SEARCH_TEXT_CHANGE } from '../actions';
+import { REQUEST_ITEMS, RECEIVE_ARTIST, RECEIVE_TOP_TRACKS } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
-  searchText: ''
+  isFetching: false,
+  artist: '',
+  topTracks: []
 };
 
-const searchArtist = (state = initialState, action) => {
+const search = (state = initialState, action) => {
   switch (action.type) {
-  case SEARCH_TEXT_CHANGE:
+  case REQUEST_ITEMS:
+    return Object.assign(state, { isFetching: true });
+  case RECEIVE_ARTIST:
+    return Object.assign(state, { artist: action.artist });
+  case RECEIVE_TOP_TRACKS:
     return Object.assign(state, {
-      searchText: action.searchText
+      isFetching: false,
+      topTracks: action.topTracks
     });
   default:
     return state;
@@ -17,7 +24,7 @@ const searchArtist = (state = initialState, action) => {
 };
 
 const rootReducer = combineReducers({
-  searchArtist
+  search
 });
 
 export default rootReducer;

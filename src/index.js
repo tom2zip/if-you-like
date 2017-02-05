@@ -5,12 +5,13 @@ import './index.css';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 import reducer from './reducers';
 
 const logger = createLogger();
 const store = createStore(
   reducer,
-  applyMiddleware(logger)
+  applyMiddleware(thunk, logger)
 );
 
 render(

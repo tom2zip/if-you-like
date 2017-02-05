@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { searchTextChange } from '../actions';
+import { initiateRequest } from '../actions';
 import SearchBox from '../components/SearchBox';
 
 const mapStateToProps = () => {
@@ -10,9 +10,8 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchTextChange: (text) => {
-      console.log(text);
-      dispatch(searchTextChange(text));
+    onSearch: (text) => {
+      dispatch(initiateRequest(text));
     }
   };
 };

@@ -4,24 +4,22 @@ class SearchBox extends Component {
 
   constructor() {
     super();
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSearchTextChange(e) {
-    this.props.onSearchTextChange(e.target.value);
-  }
-
-  onSubmitClick(e) {
-    console.log('ya');
+  handleSubmit(e) {
+    e.preventDefault();
+    const searchTextValue = this.refs.searchText.value;
+    this.props.onSearch(searchTextValue);
   }
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         <span>I like: </span>
-        <input type='text' onChange={e => this.onSearchTextChange(e)}></input>
-        <button onClick={this.onSubmitClick}>Submit</button>
-      </div>
+        <input type='text' ref='searchText' />
+        <button type='submit'>Go</button>
+      </form>
     );
   }
 }
