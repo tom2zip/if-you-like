@@ -1,4 +1,4 @@
-import { REQUEST_ITEMS, RECEIVE_ARTIST, RECEIVE_TOP_TRACKS } from '../actions';
+import { REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
@@ -10,14 +10,14 @@ const initialState = {
 const search = (state = initialState, action) => {
   switch (action.type) {
   case REQUEST_ITEMS:
-    return Object.assign(state, { isFetching: true });
-  case RECEIVE_ARTIST:
-    return Object.assign(state, { artist: action.artist });
-  case RECEIVE_TOP_TRACKS:
-    return Object.assign(state, {
+    return { ...state, isFetching: true };
+  case RECEIVE_ITEMS:
+    return {
+      ...state,
       isFetching: false,
+      artist: action.artist,
       topTracks: action.topTracks
-    });
+    };
   default:
     return state;
   }

@@ -9,18 +9,11 @@ const requestItems = () => {
   };
 };
 
-export const RECEIVE_ARTIST = 'RECEIVE_ARTIST';
-export const receiveArtist = artist => {
+export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
+export const receiveItems = topTracks => {
   return {
-    type: RECEIVE_ARTIST,
-    artist
-  };
-};
-
-export const RECEIVE_TOP_TRACKS = 'RECEIVE_TOP_TRACKS';
-export const receiveTopTracks = topTracks => {
-  return {
-    type: RECEIVE_TOP_TRACKS,
+    type: RECEIVE_ITEMS,
+    artist: topTracks[0].artists[0].name,
     topTracks
   };
 };
@@ -52,11 +45,8 @@ export const initiateRequest = searchText => dispatch => {
   dispatch(requestItems());
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
-    .then(relatedArtist => {
-      dispatch(receiveArtist(relatedArtist));
-      return getTopTracks(relatedArtist.id);
-    })
+    .then(relatedArtist => getTopTracks(relatedArtist.id))
     .then(topTracks => {
-      dispatch(receiveTopTracks(topTracks));
+      dispatch(receiveItems(topTracks));
     });
 };

@@ -1,22 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import './index.css';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
-import reducer from './reducers';
+import rootReducer from './reducers';
 
 const logger = createLogger();
 const store = createStore(
-  reducer,
+  rootReducer,
   applyMiddleware(thunk, logger)
 );
 
 render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('root')
 );

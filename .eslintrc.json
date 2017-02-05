@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "react"
+  ],
   "env": {
     "browser": true,
     "es6": true
@@ -8,7 +11,8 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "rules": {
@@ -28,6 +32,10 @@
       "error",
       "always"
     ],
-    "no-console": "warn"
+    "no-console": "warn",
+    "eol-last": "error",
+    "no-trailing-spaces": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
