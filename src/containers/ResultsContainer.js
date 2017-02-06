@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import Results from '../components/Results';
 
-const mapStateToProps = state => {
-  return {
-    artist: state.search.artist,
-    topTracks: state.search.topTracks
-  };
-};
+const mapStateToProps = state => ({
+  artist: state.search.artist,
+  artistImages: state.search.artistImages,
+  topTracks: state.search.topTracks
+});
 
 const ResultsContainer = connect(
   mapStateToProps

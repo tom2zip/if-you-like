@@ -1,14 +1,17 @@
-import { REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
+import { CLEAR_STATE, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
   isFetching: false,
   artist: '',
+  artistImages: [],
   topTracks: []
 };
 
 const search = (state = initialState, action) => {
   switch (action.type) {
+  case CLEAR_STATE:
+    return initialState;
   case REQUEST_ITEMS:
     return { ...state, isFetching: true };
   case RECEIVE_ITEMS:
@@ -16,6 +19,7 @@ const search = (state = initialState, action) => {
       ...state,
       isFetching: false,
       artist: action.artist,
+      artistImages: action.artistImages,
       topTracks: action.topTracks
     };
   default:

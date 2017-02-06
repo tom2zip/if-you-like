@@ -2,7 +2,14 @@ import fetch from 'isomorphic-fetch';
 
 const apiUrl = 'https://api.spotify.com/v1';
 
-const REQUEST_ITEMS = 'REQUEST_ITEMS';
+export const CLEAR_STATE = 'CLEAR_STATE';
+export const clearState = () => {
+  return {
+    type: CLEAR_STATE
+  };
+};
+
+export const REQUEST_ITEMS = 'REQUEST_ITEMS';
 const requestItems = () => {
   return {
     type: REQUEST_ITEMS
@@ -10,11 +17,12 @@ const requestItems = () => {
 };
 
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
-export const receiveItems = topTracks => {
+const receiveItems = completeItem => {
   return {
     type: RECEIVE_ITEMS,
-    artist: topTracks[0].artists[0].name,
-    topTracks
+    artist: completeItem.artist,
+    artistImages: completeItem.artistImages,
+    topTracks: completeItem.topTracks
   };
 };
 
@@ -42,11 +50,17 @@ const getTopTracks = id => {
 };
 
 export const initiateRequest = searchText => dispatch => {
+  let completeItem = {};
   dispatch(requestItems());
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
-    .then(relatedArtist => getTopTracks(relatedArtist.id))
+    .then(relatedArtist => {
+      completeItem.artist = relatedArtist.name;
+      completeItem.artistImages = relatedArtist.images;
+      return getTopTracks(relatedArtist.id);
+    })
     .then(topTracks => {
-      dispatch(receiveItems(topTracks));
+      completeItem.topTracks = topTracks;
+      dispatch(receiveItems(completeItem));
     });
 };

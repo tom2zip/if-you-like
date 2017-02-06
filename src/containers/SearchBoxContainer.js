@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { initiateRequest } from '../actions';
+import { clearState, initiateRequest } from '../actions';
 import SearchBox from '../components/SearchBox';
 
 const mapStateToProps = () => {
@@ -11,6 +11,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearch: (text) => {
+      dispatch(clearState());
       dispatch(initiateRequest(text));
     }
   };
