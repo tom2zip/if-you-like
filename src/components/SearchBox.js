@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../stylesheets/SearchBox.css';
 
 class SearchBox extends Component {
 
@@ -16,9 +17,11 @@ class SearchBox extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <span>I like: </span>
-        <input type='text' ref='searchText' />
-        <button type='submit'>Go</button>
+        <span>
+          <h1>I like: </h1>
+          <input type="text" placeholder="radiohead" ref="searchText" />
+          <button type="submit">Go</button>
+        </span>
       </form>
     );
   }

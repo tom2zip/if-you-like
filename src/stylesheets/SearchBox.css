@@ -1,0 +1,20 @@
+h1 {
+  display: inline;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+  font-size: 32px;
+  width: 300px;
+  text-align: center;
+  color: #00b6ff;
+}
+
+button {
+  height: 34px;
+  width: 70px;
+  font-size: 18px;
+}
