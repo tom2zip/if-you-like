@@ -10,9 +10,10 @@ export const clearState = () => {
 };
 
 export const REQUEST_ITEMS = 'REQUEST_ITEMS';
-const requestItems = () => {
+const requestItems = searchText => {
   return {
-    type: REQUEST_ITEMS
+    type: REQUEST_ITEMS,
+    searchText
   };
 };
 
@@ -51,7 +52,7 @@ const getTopTracks = id => {
 
 export const initiateRequest = searchText => dispatch => {
   let completeItem = {};
-  dispatch(requestItems());
+  dispatch(requestItems(searchText));
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
     .then(relatedArtist => {

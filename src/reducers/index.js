@@ -2,6 +2,7 @@ import { CLEAR_STATE, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
+  searchText: '',
   isFetching: false,
   artist: '',
   artistImages: [],
@@ -13,7 +14,11 @@ const search = (state = initialState, action) => {
   case CLEAR_STATE:
     return initialState;
   case REQUEST_ITEMS:
-    return { ...state, isFetching: true };
+    return {
+      ...state,
+      searchText: action.searchText,
+      isFetching: true
+    };
   case RECEIVE_ITEMS:
     return {
       ...state,

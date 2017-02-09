@@ -6,6 +6,10 @@ body {
   background: #814dfb;
 }
 
+h1, h2, h3, h4, h5, h6, p, li {
+  color: #e0e0e0;
+}
+
 #root {
   display: flex;
   flex-direction: column;
