@@ -15,6 +15,11 @@ h1 a {
 th {
   font-size: 24px;
   color: #e0e0e0;
+  padding: 10px 0px;
+}
+
+td {
+  padding: 2px 0px;
 }
 
 td a {
@@ -23,6 +28,10 @@ td a {
 
 td a:hover {
   color: #6feae6;
+}
+
+table {
+  width: 50%;
 }
 
 .top-tracks-table {
