@@ -4,11 +4,35 @@ h1 {
   text-align: center;
 }
 
+a:hover {
+  text-decoration: none
+}
+
+h1 a {
+  color: #6feae6;
+}
+
 th {
   font-size: 24px;
   color: #e0e0e0;
 }
 
-td {
+td a {
   color: #e0e0e0;
+}
+
+td a:hover {
+  color: #6feae6;
+}
+
+.top-tracks-table {
+  float: left;
+}
+
+.albums-table {
+  float: right;
+}
+
+.albums-table th, .albums-table td {
+  text-align: right;
 }

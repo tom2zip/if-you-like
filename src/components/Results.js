@@ -6,20 +6,20 @@ class Results extends Component {
     const { artist, topTracks, albums } = this.props;
     const topTrackElements = topTracks.map(track =>
       <tr key={track.id}>
-        <td>{track.name}</td>
+        <td><a href={track.external_urls.spotify} target="_blank">{track.name}</a></td>
       </tr>
     );
     const albumElements = albums.map(album =>
       <tr key={album.id}>
-        <td>{album.name}</td>
+        <td><a href={album.external_urls.spotify} target="_blank">{album.name}</a></td>
       </tr>
     );
 
     return (
       <div>
-        {artist && <h1>{artist}</h1>}
+        {artist && <h1><a href={artist.external_urls.spotify} target="_blank">{artist.name}</a></h1>}
         {topTracks.length > 0 &&
-          <table>
+          <table className="top-tracks-table">
             <thead>
               <tr>
                 <th>Top Tracks</th>
@@ -31,7 +31,7 @@ class Results extends Component {
           </table>
         }
         {albums.length > 0 &&
-          <table>
+          <table className="albums-table">
             <thead>
               <tr>
                 <th>Albums</th>

@@ -62,8 +62,7 @@ export const initiateRequest = searchText => dispatch => {
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
     .then(relatedArtist => {
-      completeItem.artist = relatedArtist.name;
-      completeItem.artistImages = relatedArtist.images;
+      completeItem.artist = relatedArtist;
       return getTopTracks(relatedArtist.id);
     })
     .then(topTracks => {

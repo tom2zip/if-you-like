@@ -20,15 +20,16 @@ input {
   height: 28px;
 }
 
+input::-webkit-input-placeholder {
+  color: #a0b3c5;
+}
+
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
 
-button {
-  height: 34px;
-  width: 70px;
-  font-size: 18px;
-  background: transparent;
+p {
   color: #e0e0e0;
-  border: 1px solid #e0e0e0;
+  position: relative;
+  margin-left: 175px;
 }
