@@ -18,9 +18,9 @@ class SearchBox extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <span>
-          <h1>I like: </h1>
+          <h4>If you like: </h4>
           <input type="text" placeholder="radiohead" ref="searchText" />
-          <button type="submit">Go</button>
+          <h4>, you'll also enjoy:</h4>
         </span>
       </form>
     );

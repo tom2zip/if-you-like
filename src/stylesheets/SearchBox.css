@@ -1,6 +1,11 @@
-h1 {
+span {
+  display: block;
+}
+
+h4 {
   display: inline;
   font-weight: lighter;
+  color: #e0e0e0;
 }
 
 input {
@@ -8,15 +13,16 @@ input {
   outline: 0;
   background: transparent;
   border-bottom: 2px solid #e0e0e0;
-  font-size: 32px;
-  width: 300px;
+  font-size: 24px;
+  width: 250px;
   text-align: center;
-  color: #3ae7ff;
+  color: #6feae6;
+  height: 28px;
 }
 
-/*input[type='text'] {
-  font-family 'Montserrat', sans-serif;
-}*/
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
 
 button {
   height: 34px;

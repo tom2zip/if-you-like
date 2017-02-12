@@ -1,3 +1,13 @@
-.search-text {
-  color: #3ae7ff
+h1 {
+  color: #6feae6;
+  font-size: 60px;
+}
+
+th {
+  font-size: 24px;
+  color: #e0e0e0;
+}
+
+td {
+  color: #e0e0e0;
 }
