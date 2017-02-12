@@ -4,8 +4,8 @@ import Results from '../components/Results';
 const mapStateToProps = state => ({
   searchText: state.search.searchText,
   artist: state.search.artist,
-  artistImages: state.search.artistImages,
-  topTracks: state.search.topTracks
+  topTracks: state.search.topTracks,
+  albums: state.search.albums
 });
 
 const ResultsContainer = connect(

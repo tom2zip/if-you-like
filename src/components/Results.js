@@ -3,10 +3,15 @@ import '../stylesheets/Results.css';
 
 class Results extends Component {
   render() {
-    const { artist, topTracks } = this.props;
+    const { artist, topTracks, albums } = this.props;
     const topTrackElements = topTracks.map(track =>
       <tr key={track.id}>
         <td>{track.name}</td>
+      </tr>
+    );
+    const albumElements = albums.map(album =>
+      <tr key={album.id}>
+        <td>{album.name}</td>
       </tr>
     );
 
@@ -22,6 +27,18 @@ class Results extends Component {
             </thead>
             <tbody>
               {topTrackElements}
+            </tbody>
+          </table>
+        }
+        {albums.length > 0 &&
+          <table>
+            <thead>
+              <tr>
+                <th>Albums</th>
+              </tr>
+            </thead>
+            <tbody>
+              {albumElements}
             </tbody>
           </table>
         }

@@ -22,8 +22,8 @@ const receiveItems = completeItem => {
   return {
     type: RECEIVE_ITEMS,
     artist: completeItem.artist,
-    artistImages: completeItem.artistImages,
-    topTracks: completeItem.topTracks
+    topTracks: completeItem.topTracks,
+    albums: completeItem.albums
   };
 };
 
@@ -50,6 +50,12 @@ const getTopTracks = id => {
     .then(json => json.tracks);
 };
 
+const getAlbums = id => {
+  return fetch(`${apiUrl}/artists/${id}/albums?album_type=album&market=US`)
+    .then(response => response.json())
+    .then(json => json.items);
+};
+
 export const initiateRequest = searchText => dispatch => {
   let completeItem = {};
   dispatch(requestItems(searchText));
@@ -62,6 +68,10 @@ export const initiateRequest = searchText => dispatch => {
     })
     .then(topTracks => {
       completeItem.topTracks = topTracks;
+      return getAlbums(topTracks[0].artists[0].id);
+    })
+    .then(albums => {
+      completeItem.albums = albums;
       dispatch(receiveItems(completeItem));
     });
 };

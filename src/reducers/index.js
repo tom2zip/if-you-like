@@ -5,8 +5,8 @@ const initialState = {
   searchText: '',
   isFetching: false,
   artist: '',
-  artistImages: [],
-  topTracks: []
+  topTracks: [],
+  albums: []
 };
 
 const search = (state = initialState, action) => {
@@ -24,8 +24,8 @@ const search = (state = initialState, action) => {
       ...state,
       isFetching: false,
       artist: action.artist,
-      artistImages: action.artistImages,
-      topTracks: action.topTracks
+      topTracks: action.topTracks,
+      albums: action.albums
     };
   default:
     return state;
