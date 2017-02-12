@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <div className="app container">
         <SearchBoxContainer></SearchBoxContainer>
+        {isFetching && <div className="loader"></div>}
         {!isFetching && <ResultsContainer></ResultsContainer>}
       </div>
     );
