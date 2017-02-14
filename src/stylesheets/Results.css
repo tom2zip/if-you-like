@@ -45,3 +45,14 @@ table {
 .albums-table th, .albums-table td {
   text-align: right;
 }
+
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    margin: 20px 0px;
+  }
+
+  th, td, .albums-table th, .albums-table td {
+    text-align: center;
+  }
+}
