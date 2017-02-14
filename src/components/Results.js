@@ -17,6 +17,7 @@ class Results extends Component {
 
     return (
       <div>
+        {artist && <p>you'll also enjoy:</p>}
         {artist && <h1><a href={artist.external_urls.spotify} target="_blank">{artist.name}</a></h1>}
         {topTracks.length > 0 &&
           <table className="top-tracks-table">

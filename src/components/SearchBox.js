@@ -20,9 +20,8 @@ class SearchBox extends Component {
         <span>
           <h4>If you like: </h4>
           <input type="text" placeholder="radiohead" ref="searchText" />
-          <h4>, you'll enjoy:</h4>
+          <button type="submit">Go</button>
         </span>
-        <p>(press enter)</p>
       </form>
     );
   }

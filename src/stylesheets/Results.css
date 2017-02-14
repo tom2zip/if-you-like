@@ -1,7 +1,14 @@
+p {
+  text-align: center;
+  color: #e0e0e0;
+  margin: 24px 0px -4px 0px;
+}
+
 h1 {
   color: #6feae6;
   font-size: 60px;
   text-align: center;
+  margin-top: 0px;
 }
 
 a:hover {
