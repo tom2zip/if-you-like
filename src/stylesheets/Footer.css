@@ -1,0 +1,12 @@
+.footer {
+  position: absolute;
+  bottom: 10%;
+}
+
+.footer span {
+  color: #a0b3c5;
+}
+
+.footer a:hover {
+  color: #1db954;
+}
