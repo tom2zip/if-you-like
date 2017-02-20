@@ -1,6 +1,5 @@
 .footer {
-  position: absolute;
-  bottom: 10%;
+  margin: 50px 0px;
 }
 
 .footer span {
