@@ -14,9 +14,9 @@ class RegionPicker extends Component {
 
   render() {
     return (
-      <span className="region-picker">
+      <span className="form-inline region-picker">
         <p>See results from:</p>
-        <select onChange={this.handleChange}>
+        <select className="form-control" onChange={this.handleChange}>
           <option value="ca">Canada</option>
           <option value="us">U.S.</option>
           <option value="mx">Mexico</option>
