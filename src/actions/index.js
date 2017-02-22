@@ -2,10 +2,10 @@ import fetch from 'isomorphic-fetch';
 
 const apiUrl = 'https://api.spotify.com/v1';
 
-export const CLEAR_STATE = 'CLEAR_STATE';
-export const clearState = () => {
+export const CLEAR_ARTIST = 'CLEAR_ARTIST';
+export const clearArtist = () => {
   return {
-    type: CLEAR_STATE
+    type: CLEAR_ARTIST
   };
 };
 
@@ -27,6 +27,14 @@ const receiveItems = completeItem => {
   };
 };
 
+export const CHANGE_REGION = 'CHANGE_REGION';
+export const changeRegion = region => {
+  return {
+    type: CHANGE_REGION,
+    region
+  };
+};
+
 const getArtistId = artist => {
   return fetch(`${apiUrl}/search?type=artist&q=${artist}`)
     .then(response => response.json())
@@ -44,30 +52,31 @@ const getRelatedArtist = id => {
     });
 };
 
-const getTopTracks = id => {
-  return fetch(`${apiUrl}/artists/${id}/top-tracks?country=US`)
+const getTopTracks = (id, region) => {
+  return fetch(`${apiUrl}/artists/${id}/top-tracks?country=${region}`)
     .then(response => response.json())
     .then(json => json.tracks);
 };
 
-const getAlbums = id => {
-  return fetch(`${apiUrl}/artists/${id}/albums?album_type=album&market=US`)
+const getAlbums = (id, region) => {
+  return fetch(`${apiUrl}/artists/${id}/albums?album_type=album&market=${region}`)
     .then(response => response.json())
     .then(json => json.items);
 };
 
-export const initiateRequest = searchText => dispatch => {
+export const initiateRequest = searchText => (dispatch, getState) => {
+  const region = getState().search.selectedRegion;
   let completeItem = {};
   dispatch(requestItems(searchText));
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
     .then(relatedArtist => {
       completeItem.artist = relatedArtist;
-      return getTopTracks(relatedArtist.id);
+      return getTopTracks(relatedArtist.id, region);
     })
     .then(topTracks => {
       completeItem.topTracks = topTracks;
-      return getAlbums(topTracks[0].artists[0].id);
+      return getAlbums(topTracks[0].artists[0].id, region);
     })
     .then(albums => {
       completeItem.albums = albums;

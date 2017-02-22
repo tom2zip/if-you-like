@@ -1,0 +1,9 @@
+.region-picker {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.region-picker p {
+  display: inline;
+  margin: 0px 5px;
+}

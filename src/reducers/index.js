@@ -1,4 +1,4 @@
-import { CLEAR_STATE, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
+import { CLEAR_ARTIST, CHANGE_REGION, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
@@ -6,18 +6,29 @@ const initialState = {
   isFetching: false,
   artist: '',
   topTracks: [],
-  albums: []
+  albums: [],
+  selectedRegion: 'ca'
 };
 
 const search = (state = initialState, action) => {
   switch (action.type) {
-  case CLEAR_STATE:
-    return initialState;
+  case CLEAR_ARTIST:
+    return {
+      ...state,
+      artist: '',
+      topTracks: [],
+      albums: []
+    };
+  case CHANGE_REGION:
+    return {
+      ...state,
+      selectedRegion: action.region
+    };
   case REQUEST_ITEMS:
     return {
       ...state,
       searchText: action.searchText,
-      isFetching: true
+      isFetching: true,
     };
   case RECEIVE_ITEMS:
     return {

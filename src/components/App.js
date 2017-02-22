@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RegionPickerContainer from '../containers/RegionPickerContainer';
 import SearchBoxContainer from '../containers/SearchBoxContainer';
 import ResultsContainer from '../containers/ResultsContainer';
 import Footer from '../components/Footer';
@@ -10,6 +11,7 @@ class App extends Component {
 
     return (
       <div className="app container">
+        <RegionPickerContainer></RegionPickerContainer>
         <SearchBoxContainer></SearchBoxContainer>
         {isFetching && <div className="loader"></div>}
         {!isFetching && <ResultsContainer></ResultsContainer>}
