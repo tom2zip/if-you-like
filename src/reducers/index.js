@@ -1,4 +1,10 @@
-import { CLEAR_ARTIST, CHANGE_REGION, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actions';
+import {
+  CLEAR_ARTIST,
+  CHANGE_REGION,
+  FAILED_SEARCH,
+  REQUEST_ITEMS,
+  RECEIVE_ITEMS
+} from '../actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
@@ -7,7 +13,8 @@ const initialState = {
   artist: '',
   topTracks: [],
   albums: [],
-  selectedRegion: 'ca'
+  selectedRegion: 'ca',
+  error: false,
 };
 
 const search = (state = initialState, action) => {
@@ -23,6 +30,14 @@ const search = (state = initialState, action) => {
     return {
       ...state,
       selectedRegion: action.region
+    };
+  case FAILED_SEARCH:
+    return {
+      isFetching: false,
+      artist: '',
+      topTracks: [],
+      albums: [],
+      error: true
     };
   case REQUEST_ITEMS:
     return {

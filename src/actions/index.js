@@ -9,6 +9,14 @@ export const clearArtist = () => {
   };
 };
 
+export const CHANGE_REGION = 'CHANGE_REGION';
+export const changeRegion = region => {
+  return {
+    type: CHANGE_REGION,
+    region
+  };
+};
+
 export const REQUEST_ITEMS = 'REQUEST_ITEMS';
 const requestItems = searchText => {
   return {
@@ -27,11 +35,10 @@ const receiveItems = completeItem => {
   };
 };
 
-export const CHANGE_REGION = 'CHANGE_REGION';
-export const changeRegion = region => {
+export const FAILED_SEARCH = 'FAILED_SEARCH';
+const failedSearch = () => {
   return {
-    type: CHANGE_REGION,
-    region
+    type: FAILED_SEARCH
   };
 };
 
@@ -81,5 +88,8 @@ export const initiateRequest = searchText => (dispatch, getState) => {
     .then(albums => {
       completeItem.albums = albums;
       dispatch(receiveItems(completeItem));
+    })
+    .catch(err => {
+      dispatch(failedSearch());
     });
 };

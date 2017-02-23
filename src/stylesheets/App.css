@@ -6,6 +6,11 @@
   margin-top: 8%;
 }
 
+.error {
+  color: #fd9cbb;
+  margin-top: 40px;
+}
+
 .loader,
 .loader:before,
 .loader:after {

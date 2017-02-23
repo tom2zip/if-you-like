@@ -3,7 +3,8 @@ import App from '../components/App';
 
 const mapStateToProps = state => ({
   isFetching: state.search.isFetching,
-  artist: state.search.artist
+  artist: state.search.artist,
+  error: state.search.error
 });
 
 const AppContainer = connect(
