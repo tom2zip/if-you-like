@@ -33,6 +33,7 @@ const search = (state = initialState, action) => {
     };
   case FAILED_SEARCH:
     return {
+      ...state,
       isFetching: false,
       artist: '',
       topTracks: [],
@@ -44,6 +45,7 @@ const search = (state = initialState, action) => {
       ...state,
       searchText: action.searchText,
       isFetching: true,
+      error: false
     };
   case RECEIVE_ITEMS:
     return {
