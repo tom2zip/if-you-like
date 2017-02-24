@@ -9,14 +9,6 @@ export const clearArtist = () => {
   };
 };
 
-export const CHANGE_REGION = 'CHANGE_REGION';
-export const changeRegion = region => {
-  return {
-    type: CHANGE_REGION,
-    region
-  };
-};
-
 export const REQUEST_ITEMS = 'REQUEST_ITEMS';
 const requestItems = searchText => {
   return {
@@ -59,31 +51,30 @@ const getRelatedArtist = id => {
     });
 };
 
-const getTopTracks = (id, region) => {
-  return fetch(`${apiUrl}/artists/${id}/top-tracks?country=${region}`)
+const getTopTracks = id => {
+  return fetch(`${apiUrl}/artists/${id}/top-tracks?country=ca`)
     .then(response => response.json())
     .then(json => json.tracks);
 };
 
-const getAlbums = (id, region) => {
-  return fetch(`${apiUrl}/artists/${id}/albums?album_type=album&market=${region}`)
+const getAlbums = id => {
+  return fetch(`${apiUrl}/artists/${id}/albums?album_type=album&market=ca`)
     .then(response => response.json())
     .then(json => json.items);
 };
 
-export const initiateRequest = searchText => (dispatch, getState) => {
-  const region = getState().search.selectedRegion;
+export const initiateRequest = searchText => dispatch=> {
   let completeItem = {};
   dispatch(requestItems(searchText));
   getArtistId(searchText)
     .then(artistId => getRelatedArtist(artistId))
     .then(relatedArtist => {
       completeItem.artist = relatedArtist;
-      return getTopTracks(relatedArtist.id, region);
+      return getTopTracks(relatedArtist.id);
     })
     .then(topTracks => {
       completeItem.topTracks = topTracks;
-      return getAlbums(topTracks[0].artists[0].id, region);
+      return getAlbums(topTracks[0].artists[0].id);
     })
     .then(albums => {
       completeItem.albums = albums;

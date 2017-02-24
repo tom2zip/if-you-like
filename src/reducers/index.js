@@ -1,6 +1,5 @@
 import {
   CLEAR_ARTIST,
-  CHANGE_REGION,
   FAILED_SEARCH,
   REQUEST_ITEMS,
   RECEIVE_ITEMS
@@ -13,7 +12,6 @@ const initialState = {
   artist: '',
   topTracks: [],
   albums: [],
-  selectedRegion: 'ca',
   error: false,
 };
 
@@ -25,11 +23,6 @@ const search = (state = initialState, action) => {
       artist: '',
       topTracks: [],
       albums: []
-    };
-  case CHANGE_REGION:
-    return {
-      ...state,
-      selectedRegion: action.region
     };
   case FAILED_SEARCH:
     return {
